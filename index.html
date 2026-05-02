@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Samsat Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S</div>
+                <div class="logo-text">
+                    <h3>Samsat Monitoring</h3>
+                    <p>Kota Pekalongan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item active">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="sidebar-label">Dashboard</span>
+                </a>
+                <a href="peta.html" class="nav-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="sidebar-label">Peta Wilayah</span>
+                </a>
+                <a href="wajib_pajak.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="sidebar-label">Data Wajib Pajak</span>
+                </a>
+                <a href="monitoring.html" class="nav-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="sidebar-label">Monitoring</span>
+                </a>
+                <a href="notifikasi.html" class="nav-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="sidebar-label">Notifikasi</span>
+                </a>
+                <a href="laporan.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span class="sidebar-label">Laporan</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span class="sidebar-label">Bantuan</span>
+                </a>
+                <a href="login.html" class="nav-item text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="sidebar-label">Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <button id="mobile-toggle" class="sidebar-toggle" style="display: none;">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari wilayah, NIK, atau plat nomor...">
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge"></span>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </button>
+                    <div class="user-info" style="text-align: right; margin-right: 12px; display: block;">
+                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--secondary);">Admin Samsat</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Dashboard Monitoring</h1>
+                    <p>Ringkasan kepatuhan pajak kendaraan bermotor Kota Pekalongan hari ini.</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card animate-fade-in" style="animation-delay: 0.1s;">
+                        <div class="metric-header">
+                            <h3>TOTAL WAJIB PAJAK</h3>
+                            <div class="icon blue"><i class="fa-solid fa-users"></i></div>
+                        </div>
+                        <div class="metric-value">45,280</div>
+                        <div class="metric-trend positive">
+                            <i class="fa-solid fa-arrow-up"></i> 12% <span style="color: var(--text-muted); font-weight: 400; margin-left: 4px;">vs bulan lalu</span>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card animate-fade-in" style="animation-delay: 0.2s;">
+                        <div class="metric-header">
+                            <h3>TINGKAT KEPATUHAN</h3>
+                            <div class="icon green"><i class="fa-solid fa-chart-pie"></i></div>
+                        </div>
+                        <div class="metric-value">68.4%</div>
+                        <div class="metric-trend negative">
+                            <i class="fa-solid fa-arrow-down"></i> 2.4% <span style="color: var(--text-muted); font-weight: 400; margin-left: 4px;">vs target</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card animate-fade-in" style="animation-delay: 0.3s;">
+                        <div class="metric-header">
+                            <h3>PENERIMAAN PKB</h3>
+                            <div class="icon orange"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                        </div>
+                        <div class="metric-value">Rp 12.4M</div>
+                        <div class="metric-trend positive">
+                            <i class="fa-solid fa-arrow-up"></i> 5.2% <span style="color: var(--text-muted); font-weight: 400; margin-left: 4px;">dari target</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card animate-fade-in" style="animation-delay: 0.4s;">
+                        <div class="metric-header">
+                            <h3>POTENSI TUNGGAKAN</h3>
+                            <div class="icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        </div>
+                        <div class="metric-value">Rp 4.2M</div>
+                        <div class="metric-trend warning">
+                            <i class="fa-solid fa-clock"></i> Estimasi <span style="color: var(--text-muted); font-weight: 400; margin-left: 4px;">Tahun 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card map-card">
+                        <div class="card-header">
+                            <h2>Visualisasi Kepatuhan Wilayah</h2>
+                            <button class="btn-outline"><i class="fa-solid fa-filter"></i> Filter</button>
+                        </div>
+                        <div class="map-container-wrapper" id="dashboard-map-wrapper">
+                            <!-- Small map view goes here -->
+                            <div id="dashboard-map" class="svg-map-container small-map"></div>
+                            
+                            <div class="map-legend">
+                                <h4>Tingkat Kepatuhan</h4>
+                                <div class="legend-item"><span class="dot green"></span> > 80% (Baik)</div>
+                                <div class="legend-item"><span class="dot yellow"></span> 50% - 80% (Sedang)</div>
+                                <div class="legend-item"><span class="dot red"></span> < 50% (Rendah)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="side-panels">
+                        <div class="card">
+                            <h2>Top 5 Tunggakan Tertinggi</h2>
+                            <div class="bar-chart">
+                                <div class="bar-item">
+                                    <div class="bar-info"><span>Kec. Pekalongan Barat</span><span>Rp 4.2M</span></div>
+                                    <div class="progress-bar"><div class="fill red" style="width: 85%"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-info"><span>Kec. Pekalongan Timur</span><span>Rp 3.8M</span></div>
+                                    <div class="progress-bar"><div class="fill red" style="width: 75%"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-info"><span>Kec. Pekalongan Selatan</span><span>Rp 2.5M</span></div>
+                                    <div class="progress-bar"><div class="fill red" style="width: 50%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h2>Top 5 Kepatuhan Terbaik</h2>
+                            <div class="bar-chart">
+                                <div class="bar-item">
+                                    <div class="bar-info"><span>Kec. Pekalongan Utara</span><span>88% Lunas</span></div>
+                                    <div class="progress-bar"><div class="fill green" style="width: 88%"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-info"><span>Kel. Krapyak</span><span>82% Lunas</span></div>
+                                    <div class="progress-bar"><div class="fill green" style="width: 82%"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-info"><span>Kel. Kandang Panjang</span><span>79% Lunas</span></div>
+                                    <div class="progress-bar"><div class="fill green" style="width: 79%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <div class="card-header" style="padding: 24px 24px 0 24px;">
+                        <h2>Wilayah Zona Merah</h2>
+                        <a href="monitoring.html" class="btn-outline">Lihat Semua</a>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>WILAYAH</th>
+                                <th>KEPATUHAN</th>
+                                <th>TUNGGAKAN</th>
+                                <th>TREND</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Krapyak</strong><br><small>Pekalongan Utara</small></td>
+                                <td>42%</td>
+                                <td>Rp 845jt</td>
+                                <td><span class="text-danger">↓ 5%</span></td>
+                                <td><a href="monitoring.html" class="text-primary">Detail</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Panjang Wetan</strong><br><small>Pekalongan Utara</small></td>
+                                <td>48%</td>
+                                <td>Rp 612jt</td>
+                                <td><span class="text-danger">↓ 2%</span></td>
+                                <td><a href="monitoring.html" class="text-primary">Detail</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <footer class="main-footer">
+                    <p>&copy; 2024 Pemerintah Kota Pekalongan - Monitoring Pajak Kendaraan Bermotor</p>
+                    <div class="footer-links">
+                        <a href="#">Kebijakan Privasi</a>
+                        <a href="#">Syarat & Ketentuan</a>
+                        <a href="#">Kontak IT</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

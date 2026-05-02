@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Wilayah - Samsat Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S</div>
+                <div class="logo-text">
+                    <h3>Samsat Monitoring</h3>
+                    <p>Kota Pekalongan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="sidebar-label">Dashboard</span>
+                </a>
+                <a href="peta.html" class="nav-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="sidebar-label">Peta Wilayah</span>
+                </a>
+                <a href="wajib_pajak.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="sidebar-label">Data Wajib Pajak</span>
+                </a>
+                <a href="monitoring.html" class="nav-item active">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="sidebar-label">Monitoring</span>
+                </a>
+                <a href="notifikasi.html" class="nav-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="sidebar-label">Notifikasi</span>
+                </a>
+                <a href="laporan.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span class="sidebar-label">Laporan</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span class="sidebar-label">Bantuan</span>
+                </a>
+                <a href="login.html" class="nav-item text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="sidebar-label">Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <button id="mobile-toggle" class="sidebar-toggle" style="display: none;">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari wilayah, NIK, atau plat nomor.">
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge"></span>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </button>
+                    <div class="user-info" style="text-align: right; margin-right: 12px; display: block;">
+                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--secondary);">Admin Samsat</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content" style="padding-bottom: 40px;">
+                <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
+                    <div>
+                        <h1 style="font-size: 1.6rem; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Monitoring Wilayah Bermasalah</h1>
+                        <p style="color: #64748b; font-size: 0.9rem;">Pantau dan kelola wilayah dengan tingkat kepatuhan pajak rendah di Kota Pekalongan.</p>
+                    </div>
+                    <div class="header-actions" style="display: flex; gap: 12px;">
+                        <button class="btn-outline" style="padding: 8px 16px; border-radius: 8px; background: white; border: 1px solid #e2e8f0; color: #1e293b; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-filter"></i> Filter
+                        </button>
+                        <button class="btn-primary" style="padding: 8px 20px; border-radius: 8px; background: #1e293b; color: white; border: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-download"></i> Ekspor Data
+                        </button>
+                    </div>
+                </div>
+
+                <div class="metrics-grid" style="margin-bottom: 32px;">
+                    <div class="metric-card animate-fade-in" style="border-left: 4px solid var(--danger); padding: 24px;">
+                        <div class="metric-header">
+                            <h3 style="text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">ZONA MERAH</h3>
+                            <div class="icon" style="color: var(--danger); background: rgba(239, 68, 68, 0.1); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" style="font-size: 2rem; font-weight: 700; margin: 12px 0;">12</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Kelurahan perlu tindakan segera</p>
+                    </div>
+                    
+                    <div class="metric-card animate-fade-in" style="border-left: 4px solid var(--warning); padding: 24px;">
+                        <div class="metric-header">
+                            <h3 style="text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">WASPADA</h3>
+                            <div class="icon" style="color: var(--warning); background: rgba(245, 158, 11, 0.1); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" style="font-size: 2rem; font-weight: 700; margin: 12px 0;">28</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Kelurahan di bawah target</p>
+                    </div>
+
+                    <div class="metric-card animate-fade-in" style="border-left: 4px solid var(--primary); padding: 24px;">
+                        <div class="metric-header">
+                            <h3 style="text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">TOTAL TUNGGAKAN</h3>
+                            <div class="icon" style="color: var(--primary); background: rgba(13, 138, 188, 0.1); width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                        </div>
+                        <div class="metric-value" style="font-size: 2rem; font-weight: 700; margin: 12px 0;">Rp 4.2M</div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">Dari wilayah bermasalah</p>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 0; overflow: visible; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 24px;">
+                    <div class="list-header" style="padding: 20px 32px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b;">Daftar Wilayah (Prioritas Tertinggi)</h3>
+                        <div class="sort-group">
+                            Urutkan berdasarkan:
+                            <select class="filter-select" style="margin-left: 12px;">
+                                <option>Status (Zona Merah)</option>
+                                <option>Tunggakan Terbesar</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr style="background: #f8fafc;">
+                                    <th style="padding: 18px 32px; text-align: left; font-size: 0.75rem; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">NAMA WILAYAH</th>
+                                    <th style="padding: 18px 32px; text-align: left; font-size: 0.75rem; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">PERSENTASE KEPATUHAN</th>
+                                    <th style="padding: 18px 32px; text-align: left; font-size: 0.75rem; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">JUMLAH BELUM BAYAR</th>
+                                    <th style="padding: 18px 32px; text-align: left; font-size: 0.75rem; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">STATUS</th>
+                                    <th style="padding: 18px 32px; text-align: center; font-size: 0.75rem; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">AKSI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Krapyak -->
+                                <tr style="border-bottom: 1px solid #f1f5f9;">
+                                    <td style="padding: 20px 32px;">
+                                        <div style="font-weight: 700; font-size: 1rem; color: #1e293b;">Krapyak</div>
+                                        <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">Kec. Pekalongan Utara</div>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-weight: 700; color: #dc2626; font-size: 0.95rem; width: 40px;">42%</span>
+                                            <div style="width: 120px; height: 6px; background: #fee2e2; border-radius: 3px; overflow: hidden;">
+                                                <div style="width: 42%; height: 100%; background: #dc2626; border-radius: 3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 20px 32px; font-weight: 600; color: #334155;">Rp 845.000.000</td>
+                                    <td style="padding: 20px 32px;">
+                                        <span style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 6px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #fee2e2;">
+                                            <span style="width: 7px; height: 7px; border-radius: 50%; background: #dc2626;"></span> ZONA MERAH
+                                        </span>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; gap: 10px; justify-content: center;">
+                                            <button class="btn-primary" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: #ef4444; color: white; border: none; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <i class="fa-solid fa-bell" style="font-size: 0.8rem;"></i> Kirim Notifikasi
+                                            </button>
+                                            <button class="btn-outline" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: white; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
+                                                Lihat Detail
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Panjang Wetan -->
+                                <tr style="border-bottom: 1px solid #f1f5f9;">
+                                    <td style="padding: 20px 32px;">
+                                        <div style="font-weight: 700; font-size: 1rem; color: #1e293b;">Panjang Wetan</div>
+                                        <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">Kec. Pekalongan Utara</div>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-weight: 700; color: #dc2626; font-size: 0.95rem; width: 40px;">48%</span>
+                                            <div style="width: 120px; height: 6px; background: #fee2e2; border-radius: 3px; overflow: hidden;">
+                                                <div style="width: 48%; height: 100%; background: #dc2626; border-radius: 3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 20px 32px; font-weight: 600; color: #334155;">Rp 612.500.000</td>
+                                    <td style="padding: 20px 32px;">
+                                        <span style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 6px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #fee2e2;">
+                                            <span style="width: 7px; height: 7px; border-radius: 50%; background: #dc2626;"></span> ZONA MERAH
+                                        </span>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; gap: 10px; justify-content: center;">
+                                            <button class="btn-primary" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: #ef4444; color: white; border: none; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <i class="fa-solid fa-bell" style="font-size: 0.8rem;"></i> Kirim Notifikasi
+                                            </button>
+                                            <button class="btn-outline" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: white; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
+                                                Lihat Detail
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Tirto -->
+                                <tr style="border-bottom: 1px solid #f1f5f9;">
+                                    <td style="padding: 20px 32px;">
+                                        <div style="font-weight: 700; font-size: 1rem; color: #1e293b;">Tirto</div>
+                                        <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">Kec. Pekalongan Barat</div>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-weight: 700; color: #d97706; font-size: 0.95rem; width: 40px;">65%</span>
+                                            <div style="width: 120px; height: 6px; background: #fef3c7; border-radius: 3px; overflow: hidden;">
+                                                <div style="width: 65%; height: 100%; background: #d97706; border-radius: 3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 20px 32px; font-weight: 600; color: #334155;">Rp 320.000.000</td>
+                                    <td style="padding: 20px 32px;">
+                                        <span style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #d97706; background: #fffbeb; padding: 6px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #fef3c7;">
+                                            <span style="width: 7px; height: 7px; border-radius: 50%; background: #d97706;"></span> WASPADA
+                                        </span>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; gap: 10px; justify-content: center;">
+                                            <button class="btn-primary" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: #f59e0b; color: white; border: none; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <i class="fa-solid fa-paper-plane" style="font-size: 0.8rem;"></i> Kirim Peringatan
+                                            </button>
+                                            <button class="btn-outline" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: white; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
+                                                Lihat Detail
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Banyurip -->
+                                <tr style="border-bottom: 1px solid #f1f5f9;">
+                                    <td style="padding: 20px 32px;">
+                                        <div style="font-weight: 700; font-size: 1rem; color: #1e293b;">Banyurip</div>
+                                        <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 4px;">Kec. Pekalongan Selatan</div>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; align-items: center; gap: 12px;">
+                                            <span style="font-weight: 700; color: #d97706; font-size: 0.95rem; width: 40px;">72%</span>
+                                            <div style="width: 120px; height: 6px; background: #fef3c7; border-radius: 3px; overflow: hidden;">
+                                                <div style="width: 72%; height: 100%; background: #d97706; border-radius: 3px;"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: 20px 32px; font-weight: 600; color: #334155;">Rp 215.400.000</td>
+                                    <td style="padding: 20px 32px;">
+                                        <span style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #d97706; background: #fffbeb; padding: 6px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #fef3c7;">
+                                            <span style="width: 7px; height: 7px; border-radius: 50%; background: #d97706;"></span> WASPADA
+                                        </span>
+                                    </td>
+                                    <td style="padding: 20px 32px;">
+                                        <div style="display: flex; gap: 10px; justify-content: center;">
+                                            <button class="btn-primary" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: #f59e0b; color: white; border: none; font-weight: 600; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                                <i class="fa-solid fa-paper-plane" style="font-size: 0.8rem;"></i> Kirim Peringatan
+                                            </button>
+                                            <button class="btn-outline" style="padding: 8px 16px; border-radius: 8px; font-size: 0.85rem; background: white; border: 1px solid #e2e8f0; color: #334155; font-weight: 600; cursor: pointer;">
+                                                Lihat Detail
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pagination-footer">
+                        <div class="pagination-info">Menampilkan 1-4 dari 47 wilayah</div>
+                        <div class="pagination-controls">
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn" style="border: none; background: transparent;">...</button>
+                            <button class="page-btn">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="main-footer" style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #94a3b8;">
+                    <p>&copy; 2024 Pemerintah Kota Pekalongan - Monitoring Pajak Kendaraan Bermotor</p>
+                    <div class="footer-links" style="display: flex; gap: 32px;">
+                        <a href="#" style="color: #64748b; text-decoration: none; font-weight: 500;">Kebijakan Privasi</a>
+                        <a href="#" style="color: #64748b; text-decoration: none; font-weight: 500;">Syarat & Ketentuan</a>
+                        <a href="#" style="color: #64748b; text-decoration: none; font-weight: 500;">Kontak IT</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

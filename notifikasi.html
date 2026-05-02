@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Notifikasi - Samsat Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S</div>
+                <div class="logo-text">
+                    <h3>Samsat Monitoring</h3>
+                    <p>Kota Pekalongan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="sidebar-label">Dashboard</span>
+                </a>
+                <a href="peta.html" class="nav-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="sidebar-label">Peta Wilayah</span>
+                </a>
+                <a href="wajib_pajak.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="sidebar-label">Data Wajib Pajak</span>
+                </a>
+                <a href="monitoring.html" class="nav-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="sidebar-label">Monitoring</span>
+                </a>
+                <a href="notifikasi.html" class="nav-item active">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="sidebar-label">Notifikasi</span>
+                </a>
+                <a href="laporan.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span class="sidebar-label">Laporan</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span class="sidebar-label">Bantuan</span>
+                </a>
+                <a href="login.html" class="nav-item text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="sidebar-label">Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <button id="mobile-toggle" class="sidebar-toggle" style="display: none;">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari data...">
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge"></span>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </button>
+                    <div class="user-info" style="text-align: right; margin-right: 12px; display: block;">
+                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--secondary);">Admin Samsat</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content" style="padding: 24px 32px;">
+                <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                    <div>
+                        <h1 style="font-size: 1.6rem; font-weight: 700; color: #1e293b; margin-bottom: 6px;">Manajemen Notifikasi</h1>
+                        <p style="color: #64748b; font-size: 0.9rem;">Kirim pesan, kelola template, dan atur jadwal pengiriman otomatis.</p>
+                    </div>
+                    <button class="btn-outline" style="padding: 8px 18px; border-radius: 8px; font-size: 0.8rem; background: white; color: #1e293b; border: 1px solid #e2e8f0; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-paper-plane" style="color: var(--primary); font-size: 0.75rem;"></i> Test Koneksi Email
+                    </button>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs-header" style="margin-bottom: 32px; border-bottom: 2px solid #e2e8f0; gap: 40px; padding: 0 4px;">
+                        <button class="tab-btn active" data-tab="kirim-baru" style="display: flex; align-items: center; gap: 10px; border-bottom-width: 3px; padding: 14px 4px; font-size: 0.95rem;">
+                            <i class="fa-solid fa-paper-plane" style="font-size: 0.9rem;"></i> Kirim Baru & Riwayat
+                        </button>
+                        <button class="tab-btn" data-tab="template" style="display: flex; align-items: center; gap: 10px; border-bottom-width: 3px; padding: 14px 4px; font-size: 0.95rem;">
+                            <i class="fa-solid fa-layer-group" style="font-size: 0.9rem;"></i> Template Pesan
+                        </button>
+                        <button class="tab-btn" data-tab="jadwal" style="display: flex; align-items: center; gap: 10px; border-bottom-width: 3px; padding: 14px 4px; font-size: 0.95rem;">
+                            <i class="fa-solid fa-robot" style="font-size: 0.9rem;"></i> Jadwal Otomatis
+                        </button>
+                    </div>
+
+                    <!-- TAB 1: KIRIM BARU -->
+                    <div id="kirim-baru" class="tab-content active animate-fade-in">
+                        <!-- Metrics Row -->
+                        <div class="metrics-grid" style="grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px;">
+                            <div class="metric-card" style="padding: 24px;">
+                                <div style="display: flex; align-items: center; gap: 14px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(13, 138, 188, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </div>
+                                    <span style="font-size: 0.85rem; font-weight: 600; color: #64748b;">Total Kirim</span>
+                                </div>
+                                <div style="margin-top: 16px; font-size: 2rem; font-weight: 700; color: #1e293b;">10</div>
+                            </div>
+                            <div class="metric-card" style="padding: 24px;">
+                                <div style="display: flex; align-items: center; gap: 14px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </div>
+                                    <span style="font-size: 0.85rem; font-weight: 600; color: #64748b;">Sukses</span>
+                                </div>
+                                <div style="margin-top: 16px; font-size: 2rem; font-weight: 700; color: var(--success);">6</div>
+                            </div>
+                            <div class="metric-card" style="padding: 24px;">
+                                <div style="display: flex; align-items: center; gap: 14px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(245, 158, 11, 0.1); color: var(--warning); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fa-solid fa-clock"></i>
+                                    </div>
+                                    <span style="font-size: 0.85rem; font-weight: 600; color: #64748b;">Pending</span>
+                                </div>
+                                <div style="margin-top: 16px; font-size: 2rem; font-weight: 700; color: var(--warning);">1</div>
+                            </div>
+                            <div class="metric-card" style="padding: 24px;">
+                                <div style="display: flex; align-items: center; gap: 14px;">
+                                    <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(239, 68, 68, 0.1); color: var(--danger); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                                        <i class="fa-solid fa-circle-xmark"></i>
+                                    </div>
+                                    <span style="font-size: 0.85rem; font-weight: 600; color: #64748b;">Gagal</span>
+                                </div>
+                                <div style="margin-top: 16px; font-size: 2rem; font-weight: 700; color: var(--danger);">3</div>
+                            </div>
+                        </div>
+
+                        <!-- Compose Card -->
+                        <div class="card" style="margin-bottom: 32px; padding: 0; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+                            <div class="card-header" style="padding: 18px 28px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(13, 138, 188, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.95rem;">
+                                        <i class="fa-solid fa-envelope-open-text"></i>
+                                    </div>
+                                    <h2 style="font-size: 1rem; font-weight: 700; color: #1e293b;">Compose Notifikasi Baru</h2>
+                                </div>
+                                <select class="filter-select" style="padding: 0 14px; height: 38px; font-size: 0.85rem;">
+                                    <option>-- Muat Template --</option>
+                                </select>
+                            </div>
+                            
+                            <div style="padding: 28px;">
+                                <!-- Filter Section -->
+                                <div style="background: #F8FAFC; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 28px;">
+                                    <h4 style="font-size: 0.9rem; font-weight: 700; color: #334155; margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
+                                        <i class="fa-solid fa-filter" style="color: var(--primary); font-size: 0.8rem;"></i> Filter Penerima
+                                    </h4>
+                                    <div style="margin-bottom: 22px;">
+                                        <label style="display: block; font-size: 0.75rem; font-weight: 600; color: #64748b; margin-bottom: 10px;">Status Jatuh Tempo</label>
+                                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                            <button class="btn-primary" style="padding: 7px 16px; font-size: 0.8rem; border-radius: 6px; font-weight: 500;">Semua</button>
+                                            <button style="padding: 7px 16px; font-size: 0.8rem; border-radius: 6px; background: white; color: #475569; border: 1px solid #cbd5e1; font-weight: 500; cursor: pointer;">Sudah Lewat (Menunggak)</button>
+                                            <button style="padding: 7px 16px; font-size: 0.8rem; border-radius: 6px; background: white; color: #475569; border: 1px solid #cbd5e1; font-weight: 500; cursor: pointer;">H-1 (Besok)</button>
+                                            <button style="padding: 7px 16px; font-size: 0.8rem; border-radius: 6px; background: white; color: #475569; border: 1px solid #cbd5e1; font-weight: 500; cursor: pointer;">H-7 (Seminggu)</button>
+                                            <button style="padding: 7px 16px; font-size: 0.8rem; border-radius: 6px; background: white; color: #475569; border: 1px solid #cbd5e1; font-weight: 500; cursor: pointer;">H-30 (Sebulan)</button>
+                                        </div>
+                                    </div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                                        <div>
+                                            <label style="display: block; font-size: 0.75rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Kelurahan</label>
+                                            <select class="filter-select" style="width: 100%;">
+                                                <option>Semua Kelurahan</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label style="display: block; font-size: 0.75rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Cari Nama/Nopol</label>
+                                            <div class="input-group-icon">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                <input type="text" placeholder="Ketik min 2 huruf..." class="filter-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Mode Section -->
+                                <div style="margin-bottom: 28px;">
+                                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 14px;">Mode Pengiriman</label>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                        <button style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 0.95rem; cursor: pointer;">
+                                            <i class="fa-solid fa-user-check"></i> Pilih Spesifik (1 WP)
+                                        </button>
+                                        <button style="display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px; background: white; color: #475569; border: 1px solid #cbd5e1; border-radius: 10px; font-weight: 600; font-size: 0.95rem; cursor: pointer;">
+                                            <i class="fa-solid fa-users"></i> Broadcast (Sesuai Filter)
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 28px;">
+                                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Pilih Wajib Pajak <span style="background: #E8F0F6; color: var(--primary); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-left: 6px; font-weight: 700;">*</span></label>
+                                    <select class="filter-select" style="width: 100%;">
+                                        <option>-- Klik filter atau ketik nama untuk mencari --</option>
+                                    </select>
+                                </div>
+
+                                <!-- Channel & Type Grid -->
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom: 32px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Kanal Pengiriman</label>
+                                        <select class="filter-select" style="width: 100%;">
+                                            <option>📧 Email & WhatsApp</option>
+                                            <option>📱 WhatsApp Only</option>
+                                            <option>📧 Email Only</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Jenis Notifikasi</label>
+                                        <select class="filter-select" style="width: 100%;">
+                                            <option>⚠️ Peringatan (Reminder)</option>
+                                            <option>📢 Informasi Umum</option>
+                                            <option>💸 Konfirmasi Pembayaran</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Subject Email</label>
+                                        <input type="text" placeholder="Subject email..." class="filter-input" style="width: 100%;">
+                                    </div>
+                                </div>
+
+                                <!-- Message Section -->
+                                <div style="margin-bottom: 32px;">
+                                    <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 14px;">Pesan Notifikasi</label>
+                                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; font-weight: 500;">{nama}</span>
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; font-weight: 500;">{no_polisi}</span>
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; font-weight: 500;">{jatuh_tempo}</span>
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; font-weight: 500;">{pajak_tahunan}</span>
+                                        <span style="background: #fee2e2; color: #991b1b; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #fecaca; cursor: pointer; font-weight: 500;">{denda}</span>
+                                        <span style="background: #dcfce7; color: #166534; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #bbf7d0; cursor: pointer; font-weight: 500;">{total_bayar}</span>
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.75rem; padding: 5px 12px; border-radius: 6px; border: 1px solid #e2e8f0; cursor: pointer; font-weight: 500;">{hari_telat}</span>
+                                    </div>
+                                    <textarea style="width: 100%; height: 200px; padding: 18px; border-radius: 14px; border: 1px solid #e2e8f0; font-family: inherit; resize: none; font-size: 0.95rem; outline: none; line-height: 1.6;" placeholder="Tulis pesan notifikasi..."></textarea>
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <button class="btn-primary" style="padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 14px rgba(13, 138, 188, 0.25);">
+                                        <i class="fa-solid fa-paper-plane"></i> Kirim Notifikasi
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- History Card -->
+                        <div class="card" style="padding: 0; margin-bottom: 32px; border-radius: 16px; border: 1px solid #e2e8f0;">
+                            <div class="card-header" style="padding: 22px 32px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 14px;">
+                                <i class="fa-solid fa-clock-rotate-left" style="color: var(--primary); font-size: 1.2rem;"></i>
+                                <h2 style="font-size: 1.05rem; font-weight: 700; color: #1e293b;">Riwayat Pengiriman</h2>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead style="background: #f8fafc;">
+                                        <tr>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">PENERIMA</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">KANAL</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">JENIS</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">STATUS</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.05em;">WAKTU</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.05em; text-align: center;">AKSI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Row 1 -->
+                                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                                            <td style="padding: 20px 32px;">
+                                                <div style="font-weight: 700; font-size: 0.95rem; color: #1e293b;">Murniyati</div>
+                                                <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 3px;">Kalibaros</div>
+                                            </td>
+                                            <td style="padding: 20px 32px;">
+                                                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 5px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #ede9fe;">
+                                                    <i class="fa-brands fa-whatsapp" style="font-size: 0.9rem;"></i>
+                                                    <i class="fa-solid fa-envelope" style="font-size: 0.8rem;"></i>
+                                                    Semua
+                                                </div>
+                                            </td>
+                                            <td style="padding: 20px 32px; font-size: 0.9rem; font-weight: 500; color: #334155;">Penagihan</td>
+                                            <td style="padding: 20px 32px;"><span style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: #16a34a; background: #f0fdf4; padding: 5px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #dcfce7;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #16a34a;"></span> Terkirim</span></td>
+                                            <td style="padding: 20px 32px; font-size: 0.85rem; color: #64748b;">02/05/26 09:49</td>
+                                            <td style="padding: 20px 32px; text-align: center; color: #cbd5e1;">-</td>
+                                        </tr>
+                                        <!-- Row Gagal -->
+                                        <tr style="border-bottom: 1px solid #f1f5f9;">
+                                            <td style="padding: 20px 32px;">
+                                                <div style="font-weight: 700; font-size: 0.95rem; color: #1e293b;">Syakir</div>
+                                                <div style="font-size: 0.8rem; color: #94a3b8; margin-top: 3px;">Kalibaros</div>
+                                            </td>
+                                            <td style="padding: 20px 32px;">
+                                                <div style="display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: #7c3aed; background: #f5f3ff; padding: 5px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #ede9fe;">
+                                                    <i class="fa-brands fa-whatsapp" style="font-size: 0.9rem;"></i>
+                                                    <i class="fa-solid fa-envelope" style="font-size: 0.8rem;"></i>
+                                                    Semua
+                                                </div>
+                                            </td>
+                                            <td style="padding: 20px 32px; font-size: 0.9rem; font-weight: 500; color: #334155;">Peringatan</td>
+                                            <td style="padding: 20px 32px;"><span style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 5px 14px; border-radius: 9999px; width: fit-content; border: 1px solid #fee2e2;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #dc2626;"></span> Gagal</span></td>
+                                            <td style="padding: 20px 32px; font-size: 0.85rem; color: #64748b;">02/05/26 09:26</td>
+                                            <td style="padding: 20px 32px; text-align: center;">
+                                                <button style="padding: 7px 16px; font-size: 0.8rem; background: #f59e0b; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 auto; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);">
+                                                    <i class="fa-solid fa-rotate-right"></i> Retry
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- Pagination for History -->
+                            <div class="pagination-footer">
+                                <div class="pagination-info">Menampilkan 1 sampai 2 dari <strong>142</strong> histori</div>
+                                <div class="pagination-controls">
+                                    <button class="page-btn"><i class="fa-solid fa-angle-left"></i></button>
+                                    <button class="page-btn active">1</button>
+                                    <button class="page-btn">2</button>
+                                    <button class="page-btn">3</button>
+                                    <button class="page-btn" style="border: none; background: transparent;">...</button>
+                                    <button class="page-btn"><i class="fa-solid fa-angle-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: TEMPLATE PESAN -->
+                    <div id="template" class="tab-content animate-fade-in">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px;">
+                            <h2 style="font-size: 1.3rem; font-weight: 700; color: #1e293b;">Koleksi Template</h2>
+                            <button id="open-modal-template" class="btn-primary" style="padding: 10px 22px; border-radius: 8px; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa-solid fa-plus"></i> Buat Template Baru
+                            </button>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px;">
+                            <!-- Template Card Example -->
+                            <div class="card" style="padding: 24px; position: relative; border-radius: 16px; border: 1px solid #e2e8f0;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b;">TEST</h3>
+                                    <span style="background: #fff7ed; color: #c2410c; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.02em;">PERINGATAN</span>
+                                </div>
+                                <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 16px;">Sub: TTT</div>
+                                <div style="background: #f8fafc; border-radius: 10px; padding: 14px; font-size: 0.9rem; color: #475569; min-height: 80px; border: 1px solid #f1f5f9; margin-bottom: 20px;">
+                                    ESSS
+                                </div>
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <button style="width: 34px; height: 34px; border-radius: 8px; background: #fee2e2; color: #ef4444; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;">
+                                        <i class="fa-solid fa-trash-can" style="font-size: 0.9rem;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: JADWAL OTOMATIS -->
+                    <div id="jadwal" class="tab-content animate-fade-in">
+                        <!-- Tambah Jadwal Form -->
+                        <div class="card" style="margin-bottom: 32px; padding: 0; border-radius: 16px; border: 1px solid #e2e8f0;">
+                            <div class="card-header" style="padding: 18px 28px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
+                                <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;">
+                                    <i class="fa-solid fa-plus"></i>
+                                </div>
+                                <h2 style="font-size: 1rem; font-weight: 700; color: #1e293b;">Tambah Jadwal Baru</h2>
+                            </div>
+                            <div style="padding: 28px;">
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Nama Jadwal</label>
+                                        <input type="text" placeholder="cth: Reminder H-7" class="filter-input" style="width: 100%;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Offset Hari (dari jatuh tempo)</label>
+                                        <input type="text" placeholder="-7 = H-7, 1 = H+1" class="filter-input" style="width: 100%;">
+                                        <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 6px;">Negatif = sebelum, Positif = setelah jatuh tempo</p>
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Kanal</label>
+                                        <select class="filter-select" style="width: 100%;">
+                                            <option>📧 Email & WA</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Template</label>
+                                        <select class="filter-select" style="width: 100%;">
+                                            <option>-- Pilih Template --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="btn-primary" style="padding: 12px 24px; border-radius: 8px; font-weight: 700; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fa-solid fa-plus"></i> Tambah Jadwal
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Daftar Jadwal Aktif -->
+                        <div class="card" style="padding: 0; margin-bottom: 32px; border-radius: 16px; border: 1px solid #e2e8f0;">
+                            <div class="card-header" style="padding: 22px 32px; border-bottom: 1px solid #f1f5f9;">
+                                <div style="display: flex; align-items: center; gap: 14px;">
+                                    <i class="fa-solid fa-robot" style="color: var(--primary); font-size: 1.2rem;"></i>
+                                    <div>
+                                        <h2 style="font-size: 1.05rem; font-weight: 700; color: #1e293b;">Daftar Jadwal Aktif</h2>
+                                        <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">Sistem mengirim otomatis setiap hari jam 08:00 via <code>php artisan notifikasi:auto-send</code></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="data-table">
+                                    <thead style="background: #f8fafc;">
+                                        <tr>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700;">JADWAL</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700;">OFFSET</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700;">KANAL</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700;">TEMPLATE</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700;">STATUS</th>
+                                            <th style="padding: 18px 32px; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 700; text-align: center;">AKSI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="6" style="padding: 40px; text-align: center; color: #94a3b8; font-size: 0.95rem;">
+                                                Belum ada jadwal. Tambahkan dari form di atas.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="main-footer">
+                    <p>&copy; 2024 Pemerintah Kota Pekalongan - Monitoring Pajak Kendaraan Bermotor</p>
+                    <div class="footer-links">
+                        <a href="#">Kebijakan Privasi</a>
+                        <a href="#">Syarat & Ketentuan</a>
+                        <a href="#">Kontak IT</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL: BUAT TEMPLATE BARU -->
+    <div id="modal-template" class="modal" style="display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px); align-items: center; justify-content: center;">
+        <div class="modal-content animate-fade-in" style="background: white; width: 680px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+            <div class="modal-header" style="padding: 24px 32px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="font-size: 1.2rem; font-weight: 700; color: #1e293b;">Buat Template Baru</h2>
+                <button id="close-modal-template" style="background: none; border: none; font-size: 1.5rem; color: #94a3b8; cursor: pointer; line-height: 1;">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 32px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                    <div>
+                        <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Nama Template</label>
+                        <input type="text" placeholder="" class="w-full p-3 rounded-lg border border-border bg-white text-sm outline-none">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Jenis</label>
+                        <select class="w-full p-3 rounded-lg border border-border bg-white text-sm outline-none cursor-pointer">
+                            <option>Peringatan</option>
+                            <option>Penagihan</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Subject Email</label>
+                    <input type="text" placeholder="" class="w-full p-3 rounded-lg border border-border bg-white text-sm outline-none">
+                </div>
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Pesan Text (Bisa pakai variabel)</label>
+                    <textarea style="width: 100%; height: 180px; padding: 18px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit; resize: none; font-size: 0.95rem; outline: none; line-height: 1.6;"></textarea>
+                </div>
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 10px;">Gambar Header (Opsional, max 2MB)</label>
+                    <div style="border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 16px; font-size: 0.9rem; color: #64748b;">
+                        Choose File No file chosen
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 16px;">
+                    <button id="cancel-modal-template" style="padding: 12px 24px; border-radius: 10px; background: #f8fafc; color: #475569; border: none; font-weight: 600; cursor: pointer;">Batal</button>
+                    <button class="btn-primary" style="padding: 12px 28px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer;">Simpan Template</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Modal Logic for Notifikasi Page
+        const modal = document.getElementById('modal-template');
+        const openBtn = document.getElementById('open-modal-template');
+        const closeBtn = document.getElementById('close-modal-template');
+        const cancelBtn = document.getElementById('cancel-modal-template');
+
+        if (openBtn) {
+            openBtn.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+        }
+
+        const closeModal = () => {
+            modal.style.display = 'none';
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>

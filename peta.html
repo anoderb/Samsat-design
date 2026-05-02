@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Wilayah - Samsat Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container no-padding">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S</div>
+                <div class="logo-text">
+                    <h3>Samsat Monitoring</h3>
+                    <p>Kota Pekalongan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="sidebar-label">Dashboard</span>
+                </a>
+                <a href="peta.html" class="nav-item active">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="sidebar-label">Peta Wilayah</span>
+                </a>
+                <a href="wajib_pajak.html" class="nav-item">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="sidebar-label">Data Wajib Pajak</span>
+                </a>
+                <a href="monitoring.html" class="nav-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="sidebar-label">Monitoring</span>
+                </a>
+                <a href="notifikasi.html" class="nav-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="sidebar-label">Notifikasi</span>
+                </a>
+                <a href="laporan.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span class="sidebar-label">Laporan</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span class="sidebar-label">Bantuan</span>
+                </a>
+                <a href="login.html" class="nav-item text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="sidebar-label">Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <button id="mobile-toggle" class="sidebar-toggle" style="display: none;">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari wilayah...">
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge"></span>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </button>
+                    <div class="user-info" style="text-align: right; margin-right: 12px; display: block;">
+                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--secondary);">Admin Samsat</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+            
+            <div class="map-and-panel">
+                <div class="map-full-container">
+                    <!-- Loading State -->
+                    <div id="map-loader" class="map-loader">
+                        <i class="fa-solid fa-spinner fa-spin"></i> Memuat Peta...
+                    </div>
+                    <!-- The SVG Map stack -->
+                    <div id="main-map" class="svg-map-container large-map"></div>
+                </div>
+                
+                <div class="detail-panel right-panel" id="detail-panel">
+                    <div class="panel-header">
+                        <h2>Detail Wilayah</h2>
+                        <p>Pilih wilayah pada peta untuk melihat detail spesifik.</p>
+                    </div>
+                    
+                    <div class="panel-filters">
+                        <div class="filter-group">
+                            <label>TAHUN</label>
+                            <select class="filter-select" style="width: 100%;"><option>2024</option></select>
+                        </div>
+                        <div class="filter-group">
+                            <label>JENIS KENDARAAN</label>
+                            <select class="filter-select" style="width: 100%;"><option>Semua</option></select>
+                        </div>
+                    </div>
+                    
+                    <div id="region-details" class="empty-state">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <p>Belum ada wilayah yang dipilih</p>
+                    </div>
+                    
+                    <div id="region-content" class="region-content hidden">
+                        <div class="region-title-card">
+                            <div class="region-icon"><i class="fa-regular fa-building"></i></div>
+                            <div class="region-name-wrapper">
+                                <h3 id="panel-region-name">Pilih Wilayah</h3>
+                                <span class="badge-status priority" id="panel-kecamatan">Kecamatan</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card panel-metric">
+                            <div class="metric-header">
+                                <h3>TOTAL KENDARAAN</h3>
+                            </div>
+                            <div class="metric-value" id="panel-total">0</div>
+                            <div class="metric-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> +2.5% dari bulan lalu</div>
+                        </div>
+                        
+                        <div class="panel-split-metrics">
+                            <div class="metric-box">
+                                <h4>SUDAH BAYAR</h4>
+                                <div class="val text-primary" id="panel-paid">0</div>
+                                <div class="progress-bar"><div class="fill blue" style="width: 0%" id="bar-paid"></div></div>
+                            </div>
+                            <div class="metric-box">
+                                <h4>BELUM BAYAR</h4>
+                                <div class="val text-danger" id="panel-unpaid">0</div>
+                                <div class="progress-bar"><div class="fill red" style="width: 0%" id="bar-unpaid"></div></div>
+                            </div>
+                        </div>
+                        
+                        <div class="compliance-card">
+                            <div class="compliance-info">
+                                <h4>PERSENTASE KEPATUHAN</h4>
+                                <p id="panel-compliance-text">-</p>
+                            </div>
+                            <div class="circular-progress" id="panel-compliance-circle">
+                                <span class="progress-value" id="panel-compliance-val">0%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="potential-card">
+                            <div class="pot-header">
+                                <h4>POTENSI PAJAK (ESTIMASI)</h4>
+                                <i class="fa-solid fa-wallet"></i>
+                            </div>
+                            <h2 id="panel-potential">Rp 0</h2>
+                            <p>Estimasi dari kendaraan yang belum membayar pajak.</p>
+                            <button class="btn-primary w-100 mt-3">Buat Laporan Penagihan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Tooltip -->
+    <div id="map-tooltip" class="map-tooltip"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

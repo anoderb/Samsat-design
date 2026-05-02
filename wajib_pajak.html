@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Wajib Pajak - Samsat Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">S</div>
+                <div class="logo-text">
+                    <h3>Samsat Monitoring</h3>
+                    <p>Kota Pekalongan</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span class="sidebar-label">Dashboard</span>
+                </a>
+                <a href="peta.html" class="nav-item">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span class="sidebar-label">Peta Wilayah</span>
+                </a>
+                <a href="wajib_pajak.html" class="nav-item active">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="sidebar-label">Data Wajib Pajak</span>
+                </a>
+                <a href="monitoring.html" class="nav-item">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span class="sidebar-label">Monitoring</span>
+                </a>
+                <a href="notifikasi.html" class="nav-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="sidebar-label">Notifikasi</span>
+                </a>
+                <a href="laporan.html" class="nav-item">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span class="sidebar-label">Laporan</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span class="sidebar-label">Bantuan</span>
+                </a>
+                <a href="login.html" class="nav-item text-danger">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="sidebar-label">Keluar</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="sidebar-toggle">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <button id="mobile-toggle" class="sidebar-toggle" style="display: none;">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="search-bar">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Cari NIK, Nama, atau No. Polisi...">
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge"></span>
+                    </button>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                    </button>
+                    <div class="user-info" style="text-align: right; margin-right: 12px; display: block;">
+                        <div style="font-size: 0.85rem; font-weight: 600; color: var(--secondary);">Admin Samsat</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">Administrator</div>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-content">
+                <div class="page-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <h1>Data Wajib Pajak</h1>
+                        <p>Kelola data wajib pajak kendaraan bermotor di wilayah Kota Pekalongan.</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary"><i class="fa-solid fa-download"></i> Export</button>
+                    </div>
+                </div>
+
+                <div class="card" style="padding: 0; margin-bottom: 24px;">
+                    <div style="padding: 24px;">
+                        <div class="filters-bar">
+                            <div class="input-group-icon" style="flex: 1;">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Cari Nama / No Polisi (TBKB)..." class="filter-input">
+                            </div>
+                            <select class="filter-select" style="width: 200px;">
+                                <option>Semua Wilayah</option>
+                                <option>Pekalongan Utara</option>
+                                <option>Pekalongan Timur</option>
+                                <option>Pekalongan Selatan</option>
+                                <option>Pekalongan Barat</option>
+                            </select>
+                            <select class="filter-select" style="width: 180px;">
+                                <option>Semua Status</option>
+                                <option>Sudah Bayar</option>
+                                <option>Belum Bayar</option>
+                            </select>
+                            <button class="btn-primary" style="height: 44px; width: 50px; padding: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px;"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>NAMA PEMILIK</th>
+                                        <th>WILAYAH</th>
+                                        <th>NO POLISI (TBKB)</th>
+                                        <th>PKB (ESTIMASI)</th>
+                                        <th>STATUS</th>
+                                        <th>AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: var(--primary); font-weight: 600;">1</td>
+                                        <td>
+                                            <strong>Budi Santoso</strong>
+                                            <span class="address-subtext">Jl. Kurinci No. 45</span>
+                                        </td>
+                                        <td>Pekalongan Barat</td>
+                                        <td style="font-weight: 500;">G 1234 AB</td>
+                                        <td style="font-weight: 600;">Rp 450.000</td>
+                                        <td><span class="badge-status success"><span class="dot green" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor; margin-right:4px;"></span>Sudah Bayar</span></td>
+                                        <td><i class="fa-solid fa-ellipsis-vertical action-menu"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--danger); font-weight: 600;">2</td>
+                                        <td>
+                                            <strong>Siti Aminah</strong>
+                                            <span class="address-subtext">Jl. Jend. Sudirman No. 12</span>
+                                        </td>
+                                        <td>Pekalongan Timur</td>
+                                        <td style="font-weight: 500;">G 5678 CD</td>
+                                        <td style="font-weight: 600;">Rp 2.850.000</td>
+                                        <td><span class="badge-status danger"><span class="dot red" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor; margin-right:4px;"></span>Belum Bayar</span></td>
+                                        <td><i class="fa-solid fa-ellipsis-vertical action-menu"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--secondary); font-weight: 600;">3</td>
+                                        <td>
+                                            <strong>Ahmad Fauzi</strong>
+                                            <span class="address-subtext">Jl. Hayam Wuruk No. 88</span>
+                                        </td>
+                                        <td>Pekalongan Selatan</td>
+                                        <td style="font-weight: 500;">G 9012 EF</td>
+                                        <td style="font-weight: 600;">Rp 820.000</td>
+                                        <td><span class="badge-status success"><span class="dot green" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor; margin-right:4px;"></span>Sudah Bayar</span></td>
+                                        <td><i class="fa-solid fa-ellipsis-vertical action-menu"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--danger); font-weight: 600;">4</td>
+                                        <td>
+                                            <strong>Rina Kusumawati</strong>
+                                            <span class="address-subtext">Perum. Binagriya Blok C No. 5</span>
+                                        </td>
+                                        <td>Pekalongan Barat</td>
+                                        <td style="font-weight: 500;">G 3456 GH</td>
+                                        <td>Honda Brio</td>
+                                        <td><span class="badge-status danger"><span class="dot red" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor; margin-right:4px;"></span>Belum Bayar</span></td>
+                                        <td><i class="fa-solid fa-ellipsis-vertical action-menu"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: var(--secondary); font-weight: 600;">5</td>
+                                        <td>
+                                            <strong>Dwi Cahyono</strong>
+                                            <span class="address-subtext">Jl. Kusuma Bangsa No. 21</span>
+                                        </td>
+                                        <td>Pekalongan Utara</td>
+                                        <td style="font-weight: 500;">G 7890 IJ</td>
+                                        <td>Suzuki Ertiga</td>
+                                        <td><span class="badge-status success"><span class="dot green" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:currentColor; margin-right:4px;"></span>Sudah Bayar</span></td>
+                                        <td><i class="fa-solid fa-ellipsis-vertical action-menu"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination-footer">
+                        <div class="pagination-info">Menampilkan 1 sampai 5 dari <strong>24,592</strong> data</div>
+                        <div class="pagination-controls">
+                            <button class="page-btn"><i class="fa-solid fa-angle-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn" style="border: none; background: transparent;">...</button>
+                            <button class="page-btn">12</button>
+                            <button class="page-btn"><i class="fa-solid fa-angle-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="main-footer">
+                    <p>&copy; 2024 Pemerintah Kota Pekalongan - Monitoring Pajak Kendaraan Bermotor</p>
+                    <div class="footer-links">
+                        <a href="#">Kebijakan Privasi</a>
+                        <a href="#">Syarat & Ketentuan</a>
+                        <a href="#">Kontak IT</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

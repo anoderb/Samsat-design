@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - Samsat Monitoring</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-body">
+    <div class="login-container animate-fade-in">
+        <div class="login-header">
+            <div class="login-logo">S</div>
+            <h2>Samsat Monitoring</h2>
+            <p>Sistem Informasi Kepatuhan Pajak Kendaraan Kota Pekalongan</p>
+        </div>
+        
+        <form class="login-form" action="index.html">
+            <div class="form-group">
+                <label>Alamat Email / NIP</label>
+                <input type="text" placeholder="Masukkan email atau NIP Anda" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--background); outline: none; transition: border-color 0.2s;" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Kata Sandi</label>
+                <input type="password" placeholder="Masukkan kata sandi" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--background); outline: none; transition: border-color 0.2s;" required>
+            </div>
+            
+            <div class="login-options">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+                    <input type="checkbox"> Ingat saya
+                </label>
+                <a href="#" style="font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 500;">Lupa kata sandi?</a>
+            </div>
+            
+            <button type="submit" class="btn-primary w-full py-3 mt-4" style="font-size: 1rem; font-weight: 700; letter-spacing: 0.5px;">
+                MASUK KE DASHBOARD
+            </button>
+        </form>
+        
+        <div class="login-footer" style="margin-top: 32px; text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+            &copy; 2024 Pemerintah Kota Pekalongan<br>
+            Untuk kendala akses, hubungi Tim IT.
+        </div>
+    </div>
+
+    <style>
+        .login-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #F4F7FE 0%, #E8F0F6 100%);
+        }
+        .login-container {
+            width: 420px;
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .login-logo {
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 2rem;
+            margin: 0 auto 16px auto;
+            box-shadow: 0 8px 16px rgba(13, 138, 188, 0.2);
+        }
+        .login-header h2 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        .login-header p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+    </style>
+</body>
+</html>
